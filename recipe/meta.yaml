@@ -1,23 +1,21 @@
 {% set name = "manhole" %}
 {% set version = "1.6.0" %}
-{% set file_ext = "tar.gz" %}
-{% set hash_type = "sha256" %}
-{% set hash_value = "d4ab98198481ed54a5b95c0439f41131f56d7d3755eedaedce5a45ca7ff4aa42" %}
+{% set sha256 = "d4ab98198481ed54a5b95c0439f41131f56d7d3755eedaedce5a45ca7ff4aa42" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}
-  {{ hash_type }}: {{ hash_value }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
 
 build:
   number: 0
+  noarch: python
   entry_points:
     - manhole-cli = manhole.cli:main
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
-  skip: True  # [win or py<36]
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   build:
