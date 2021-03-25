@@ -1,6 +1,6 @@
 {% set name = "manhole" %}
-{% set version = "1.6.0" %}
-{% set sha256 = "d4ab98198481ed54a5b95c0439f41131f56d7d3755eedaedce5a45ca7ff4aa42" %}
+{% set version = "1.7.0" %}
+{% set sha256 = "224985bf1dd032f2dc0ca4107f727835b6f50e1df6d78781d6c9f4cae8b585e2" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   noarch: python
   entry_points:
     - manhole-cli = manhole.cli:main
